@@ -1,0 +1,56 @@
+javascript:
+var title;
+var list = ["undefined", "zn-body__paragraph speakable\">", "<cite class=", "\"el-editorial-source>", "</cite>", "a href=\"", "target=\"_blank\">", "</a>", "\"el-editorial-source\">", "<cite class=\"el-editorial-source\">", "target=\"_blank\">", "</a>", "zn-body__paragraph\">", "zn-body__paragraph", "<p>", "</p>", "zn-body__footer\">", "<h1 class=\"pg-headline\">", "<"];
+var x = document.documentElement.outerHTML;
+function nthIndex(str, pat, n){
+    var L= str.length, i= -1;
+    while(n-- && i++<L){
+        i= str.indexOf(pat, i);
+        if (i < 0) break;
+    }
+    return i;
+}
+var becomeBlank;
+var z;
+for(var i = 2; i < 11; i++){
+	if(nthIndex(x, "zn-body__paragraph speakable", i) == -1){
+		break;
+	}
+	z = nthIndex(x, "zn-body__paragraph speakable", i);
+	becomeBlank+=x.substring(z, x.indexOf("</div>", z)) + "\n";
+}
+
+for(var i = 1; i < 20; i++){
+	if(nthIndex(x, "zn-body__paragraph", i) == -1){
+		break;
+	}
+	z = nthIndex(x, "zn-body__paragraph", i);
+	becomeBlank+=x.substring(z, x.indexOf("</div>", z)) + "\n";
+}
+titleas = nthIndex(x, "<h1", 1);
+title += x.substring(titleas, x.indexOf("</h1>", x));
+for(var i = 0; i < list.length; i++){
+	for(var please = 0; please < 10; please++){
+		becomeBlank = becomeBlank.replace(list[i], "");
+		title = title.replace(list[i], "");
+	}
+}
+var downloadThis;
+deleteProcess = nthIndex(becomeBlank, "(CNN)", 2);
+if(deleteProcess == -1){
+	downloadThis += becomeBlank.substring(becomeBlank.indexOf("(CNN)"), becomeBlank.length-1);
+	downloadThis = downloadThis.replace("undefined", "");
+} else {
+	downloadThis += becomeBlank.substring(deleteProcess, becomeBlank.length-1);
+	downloadThis = downloadThis.replace("undefined", "");
+}
+
+var textToSave = downloadThis;
+
+var hiddenElement = document.createElement('a');
+
+hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+hiddenElement.target = '_blank';
+hiddenElement.download = title+'.txt';
+hiddenElement.click();
+window.close();
