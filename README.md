@@ -6,7 +6,7 @@ If using Chrome browser:
 
 If you want to manually get every CNN page:
 1. Make a bookmark (Name it whatever you want)
-2. Copy and paste the code in "_____" to the bookmarks "URL:" tab. 
+2. Copy and paste the code in "ManualCNNStrip" to the bookmarks "URL:" tab. 
 3. Let the page load, meaning when the circle stops and the prefab(CNN tiny image) shows 
 4. Click the bookmark on the CNN page of choice(As long as it isnt part of the *** section on top of this README document)
 5. Viola, the page is downloaded to a ".txt" file and can be accessed easily (Only gets the "important" text)
